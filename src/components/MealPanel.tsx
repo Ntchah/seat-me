@@ -64,7 +64,7 @@ export default function MealPanel() {
 					categories={['japanese', 'fine dining']}
 				/>
 			</div>
-			<div className="flex flex-col items-center z-10 text-white relative pt-20">
+			<div className="flex flex-col items-center z-10 text-white relative pt-8 lg:pt-20">
 				<p className="font-eglen text-3xl md:text-5xl lg:text-7xl text-nowrap">
 					Your taste buds
 				</p>
