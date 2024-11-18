@@ -23,7 +23,7 @@ export default function TopMenu() {
           console.log("toggle");
      };
      return (
-          <div className='fixed z-40 w-full h-16 lg:h-24 py-4 lg:py-7 px-5 lg:px-12 gap-3 flex item-center shadow-lg justify-between'>
+          <div className='fixed z-40 w-full h-16 lg:h-24 py-4 lg:py-7 px-5 lg:px-12 gap-3 flex item-center justify-between'>
                <Link href="/" passHref>
                     <Image
                          src='/img/logo.png'
