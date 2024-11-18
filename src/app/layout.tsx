@@ -15,9 +15,11 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({
   children,
+
 }: Readonly<{
-  children: React.ReactNode;
+	children: React.ReactNode;
 }>) {
+
   const nextAuthSession = await getServerSession(authOptions);
   return (
     <html lang="en">
@@ -25,8 +27,10 @@ export default async function RootLayout({
         <NextAuthProvider session={nextAuthSession}>
           <TopMenu />
           {children}
+          <Footer />
         </NextAuthProvider>
       </body>
     </html>
   );
+
 }

@@ -1,62 +1,69 @@
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+	--background: #ffffff;
+	--foreground: #171717;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+	:root {
+		--background: #0a0a0a;
+		--foreground: #ededed;
+	}
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+	color: var(--foreground);
+	background: var(--background);
+	font-family: Arial, Helvetica, sans-serif;
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+	.text-balance {
+		text-wrap: balance;
+	}
 }
 
 @font-face {
-  font-family: 'LINE Seed Sans TH';
-  src: url('/fonts/LINESeedSansTH_W_Th.woff2') format('woff2');
-  font-weight: 100; /* Thin */
-  font-style: normal;
+	font-family: 'LINE Seed Sans TH';
+	src: url('/fonts/LINESeedSansTH_W_Th.woff2') format('woff2');
+	font-weight: 100; /* Thin */
+	font-style: normal;
 }
 
 @font-face {
-  font-family: 'LINE Seed Sans TH';
-  src: url('/fonts/LINESeedSansTH_W_Rg.woff2') format('woff2');
-  font-weight: 400; /* Regular */
-  font-style: normal;
+	font-family: 'LINE Seed Sans TH';
+	src: url('/fonts/LINESeedSansTH_W_Rg.woff2') format('woff2');
+	font-weight: 400; /* Regular */
+	font-style: normal;
 }
 
 @font-face {
-  font-family: 'LINE Seed Sans TH';
-  src: url('/fonts/LINESeedSansTH_W_Bd.woff2') format('woff2');
-  font-weight: 700; /* Bold */
-  font-style: normal;
+	font-family: 'LINE Seed Sans TH';
+	src: url('/fonts/LINESeedSansTH_W_Bd.woff2') format('woff2');
+	font-weight: 700; /* Bold */
+	font-style: normal;
 }
 
 @font-face {
-  font-family: 'LINE Seed Sans TH';
-  src: url('/fonts/LINESeedSansTH_W_He.woff2') format('woff2');
-  font-weight: 800; /* Heavy */
-  font-style: normal;
+	font-family: 'LINE Seed Sans TH';
+	src: url('/fonts/LINESeedSansTH_W_He.woff2') format('woff2');
+	font-weight: 800; /* Heavy */
+	font-style: normal;
 }
 
 @font-face {
-  font-family: 'LINE Seed Sans TH';
-  src: url('/fonts/LINESeedSansTH_W_XBd.woff2') format('woff2');
-  font-weight: 900; /* Extra Bold */
-  font-style: normal;
+	font-family: 'LINE Seed Sans TH';
+	src: url('/fonts/LINESeedSansTH_W_XBd.woff2') format('woff2');
+	font-weight: 900; /* Extra Bold */
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Eglen';
+	src: url('/fonts/eglen.otf') format('opentype');
+	font-weight: normal;
+	font-style: normal;
 }
