@@ -1,36 +1,34 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
-import TopMenu from "@/components/TopMenu";
-import { getServerSession } from "next-auth";
-import { authOptions } from "./api/auth/[...nextauth]/authOptions";
-import NextAuthProvider from "@/providers/NextAuthProvider";
+import Footer from '@/components/Footer';
+import TopMenu from '@/components/TopMenu';
+import NextAuthProvider from '@/providers/NextAuthProvider';
+import type { Metadata } from 'next';
+import { getServerSession } from 'next-auth';
+import { Inter } from 'next/font/google';
+import { authOptions } from './api/auth/[...nextauth]/authOptions';
+import './globals.css';
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: "SeatMe",
-  description: "Restaurant Booking App",
+	title: 'SeatMe',
+	description: 'Restaurant Booking App',
 };
 
 export default async function RootLayout({
-  children,
-
+	children,
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
-
-  const nextAuthSession = await getServerSession(authOptions);
-  return (
-    <html lang="en">
-      <body className={inter.className}>
-        <NextAuthProvider session={nextAuthSession}>
-          <TopMenu />
-          {children}
-          <Footer />
-        </NextAuthProvider>
-      </body>
-    </html>
-  );
-
+	const nextAuthSession = await getServerSession(authOptions);
+	return (
+		<html lang="en">
+			<body className={inter.className}>
+				<NextAuthProvider session={nextAuthSession}>
+					<TopMenu />
+					{children}
+					<Footer />
+				</NextAuthProvider>
+			</body>
+		</html>
+	);
 }
