@@ -36,6 +36,8 @@ export default function TopMenu() {
                     {
                          session ?
                               <div className="flex items-center gap-4 font-light text-sm">
+                                    <TopMenuItem title='my bookings' pageRef='/mybooking' />
+                                    <TopMenuItem title='profile' pageRef='/profile' />
                                    <p>Welcome back,{session.user.name}!</p>
                                    <button
                                         onClick={() => {
