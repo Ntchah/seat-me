@@ -3,6 +3,8 @@ import { signIn } from "next-auth/react";
 import { useState, FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEnvelope,faKey } from '@fortawesome/free-solid-svg-icons'
 
 export default function Login() {
   const [email, setEmail] = useState<string>("");
@@ -13,7 +15,7 @@ export default function Login() {
 
   const handleLogin = async (e: FormEvent) => {
     e.preventDefault();
-    setErrorMessage(""); 
+    setErrorMessage("");
 
     try {
       const res = await signIn("credentials", {
@@ -21,7 +23,7 @@ export default function Login() {
         email,
         password,
       });
-  
+
       if (res?.error) {
         setErrorMessage(res.error);
       } else {
@@ -35,50 +37,73 @@ export default function Login() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-white">
-      <div className="flex flex-col items-center justify-center w-full bg-white rounded-lg shadow-md lg:max-w-screen-sm">
-        <div className="p-6 w-full lg:p-8">
-          <h1 className="mb-3 text-2xl font-bold text-gray-900 lg:text-3xl dark:text-white">Login to your account</h1>
-          <form onSubmit={handleLogin} className="mt-8">
-            <div className="mb-6">
-              <label className="block mb-2 text-sm font-medium text-gray-900">Email</label>
-              <input
-                type="text"
-                name="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                className="bg-gray-50 border border-gray-300 text-gray-900 lg:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder:text-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              />
+    <div className="flex min-h-screen">
+      {/* Left Section: Image */}
+      <div className="w-2/3 relative">
+        <img
+          src="/img/banner.jpg"
+          alt="banner"
+          className="h-full w-full object-cover"
+        />
+      </div>
+
+      {/* Right Section: Login Form */}
+      <div className="w-1/3 bg-black text-white flex items-center justify-center">
+        <div className="w-full max-w-md px-6">
+          <h1 className="text-2xl font-medium mb-4">Sign in</h1>
+          <p className="text-sm mb-8">
+            If you don’t have an account,{" "}
+            <Link href="/register" className="text-md text-yellow-500 font-semibold hover:underline">
+              Register here!
+            </Link>
+          </p>
+          <form onSubmit={handleLogin} className="space-y-6">
+            <div>
+              <label htmlFor="email" className="block text-sm font-medium text-white mb-1">
+                Email
+              </label>
+              <div className="flex items-center gap-3">
+                <FontAwesomeIcon icon={faEnvelope} className="text-yellow-500" size="lg" />
+                <input
+                  type="text"
+                  id="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  placeholder="Enter your email address"
+                  className="w-full bg-black text-white border-0 border-b-2 border-gray-300 focus:border-yellow-500 placeholder:text-sm placeholder-gray-500 focus:ring-0 focus-visible:outline-none"
+                />
+              </div>
             </div>
-            <div className="mb-6">
-              <label className="block mb-2 text-sm font-medium text-gray-900">Password</label>
-              <input
-                type="password"
-                name="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-                className="bg-gray-50 border border-gray-300 text-gray-900 lg:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder:text-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              />
+            <div>
+              <label htmlFor="password" className="block text-sm font-medium text-white mb-1">
+                Password
+              </label>
+              <div className="flex items-center gap-3">
+                <FontAwesomeIcon icon={faKey} className="text-yellow-500" size="lg" />
+                <input
+                  type="password"
+                  id="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                  placeholder="Enter your password"
+                  className="w-full bg-black text-white border-0 border-b-2 border-gray-300 focus:border-yellow-500 placeholder:text-sm placeholder-gray-500 focus:ring-0 focus-visible:outline-none"
+                />
+              </div>
             </div>
+
+
             {errorMessage && (
-              <p className="text-red-500 text-center mb-4">
-                {errorMessage}
-              </p>
+              <p className="text-red-500 text-center">{errorMessage}</p>
             )}
+
             <button
               type="submit"
-              className="w-[25%] bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mb-2 rounded-md"
+              className="w-full py-2 bg-yellow-500 text-black font-bold rounded-md hover:bg-yellow-600"
             >
               Login
             </button>
-            <div className="text-sm font-medium text-gray-500 dark:text-gray-400">
-              Not registered?
-              <Link className="ml-1 text-blue-700 hover:underline dark:text-blue-500" href={"/register"}>
-                Create an account.
-              </Link>
-            </div>
           </form>
         </div>
       </div>
