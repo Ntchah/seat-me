@@ -1,18 +1,24 @@
 import type { Config } from "tailwindcss";
 
-export default {
+const config: Config = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./node_modules/flowbite/**/*.js",
   ],
   theme: {
     extend: {
+      fontFamily: {
+        'line-seed-sans': ['"LINE Seed Sans TH"', 'sans-serif'],
+      },
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        'Bg': '#F8F8F8',
       },
     },
   },
-  plugins: [],
-} satisfies Config;
+  plugins: [
+    require('flowbite/plugin')
+],
+};
+export default config;
