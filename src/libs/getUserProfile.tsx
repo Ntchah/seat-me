@@ -8,6 +8,7 @@ export default async function getUserProfile(token:string) {
      if(!response.ok) {
           throw new Error("Failed to fetch user profile")
      }
-     return response.json()
+     const profileData = await response.json();
+     return profileData.data;
 
 }
