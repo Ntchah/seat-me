@@ -28,6 +28,8 @@ export default async function MyBookingCard({
 	};
 	const formattedDate = date.toLocaleDateString('en-GB', options);
 
+
+
 	return (
 		<div className="flex flex-col justify-start shadow-lg">
 			<span
