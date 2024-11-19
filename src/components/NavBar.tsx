@@ -4,12 +4,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-export default function NavBar(): JSX.Element {
+export default function NavBar() {
     const pathname = usePathname();
 
     const getLinkClassName = (path: string): string =>
         pathname === path
-            ? "font-semibold underline text-white hover:font-bold"
+            ? "font-semibold underline underline-offset-4 decoration-1  text-white hover:font-bold"
             : "font-light text-gray-300 hover:font-semibold";
 
     return (
@@ -22,10 +22,10 @@ export default function NavBar(): JSX.Element {
             />
 
             <div className="flex flex-col py-40 items-center space-y-4">
-                <Link href="/" className={getLinkClassName("/")}>
+                <Link href="/manage/restaurant" className={getLinkClassName("/manage/restaurant")}>
                     Restaurant
                 </Link>
-                <Link href="/" className={getLinkClassName("/")}>
+                <Link href="/manage/booking" className={getLinkClassName("/manage/booking")}>
                     Booking
                 </Link>
             </div>
