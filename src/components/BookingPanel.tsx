@@ -7,6 +7,7 @@ import dayjs, { Dayjs } from 'dayjs';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import { BookingByIdJson } from '../../interface';
 import DateReserve from './DateReserve';
 
 export default function BookingPanel({
@@ -41,15 +42,14 @@ export default function BookingPanel({
 		const bookingCreatedAtString = dayjs(bookingCreatedAt).format('YYYY-MM-DD');
 
 		try {
-			await postBooking(
+			const response: BookingByIdJson = await postBooking(
 				rid,
 				token,
 				bookingDate,
 				numGuest,
 				bookingCreatedAtString,
 			);
-			alert('Booked successfully!');
-			router.push('/mybooking');
+			router.push(`/managebooking/success/${response.data._id}`);
 			router.refresh();
 		} catch (error) {
 			console.error('Error posting booking:', error);
