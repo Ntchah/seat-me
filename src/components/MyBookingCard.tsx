@@ -26,7 +26,7 @@ export default function MyBookingCard({
                <p className="font-eglen text-5xl text-white text-left text-wrap max-w-[270px] py-2 mb-4">
                     {name}
                </p>
-               <p className="text-md text-white text-left font-light text-wrap max-w-[270px] py-2">
+               <p className="text-sm text-white text-left font-light text-wrap max-w-[270px] py-2">
                     Date: {reserveDate}
                </p>
 
