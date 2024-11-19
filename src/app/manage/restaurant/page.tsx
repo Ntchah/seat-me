@@ -1,17 +1,21 @@
-"use client";
-import React from "react";
-import RestaurantTableRow from "@/components/RestaurantTableRow";
-import NavBar from "@/components/NavBar";
-import Link from "next/link";
 
-export default function page() {
+import NavBar from '@/components/NavBar';
+import RestaurantTableRow from '@/components/RestaurantTableRow';
+import getRestaurants from '@/libs/getRestaurants';
+import { RestaurantItem, RestaurantJson } from '../../../../interface';
 
-     const restaurantData = [
-          { name: "Dongy Sushi", foodType: "FineDine", province: "Rayong" },
-          { name: "Dongy Sushi", foodType: "FineDine", province: "Rayong" },
-          { name: "Dongy Sushi", foodType: "FineDine", province: "Rayong" },
-          //call GET fetch method here
-     ];
+
+export default async function page() {
+	const restaurantsJson: Promise<RestaurantJson> = getRestaurants();
+	const restaurantsJsonReady = await restaurantsJson;
+
+	return (
+		<div className="flex flex-row">
+			<NavBar />
+			<main className="flex flex-col items-start px-16 py-32 bg-black w-full min-h-screen text-white">
+				<p className="font-eglen text-3xl md:text-5xl lg:text-7xl text-nowrap">
+					Restaurant Management
+				</p>
 
      return (
           <div className="flex flex-row">
@@ -58,4 +62,5 @@ export default function page() {
                </main>
           </div>
      );
+
 }
