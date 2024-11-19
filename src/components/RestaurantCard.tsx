@@ -32,14 +32,15 @@ export default function RestaurantCard({
 			<p className="font-eglen text-5xl text-white text-left text-wrap max-w-[270px] py-2 w-full">
 				{name}
 			</p>
-			<Rating
-				value={score}
-				precision={0.5}
-				readOnly
-				size="small"
-				className="w-full justify-start"
-				sx={{ color: '#A17027' }}
-			/>
+			<div className="w-full justify-start items-start justify-items-start">
+				<Rating
+					value={score}
+					precision={0.5}
+					readOnly
+					size="small"
+					sx={{ color: '#A17027' }}
+				/>
+			</div>
 			<div className="w-full py-6">
 				<Link
 					href={href}

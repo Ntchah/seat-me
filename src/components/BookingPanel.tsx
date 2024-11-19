@@ -5,6 +5,7 @@ import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import dayjs, { Dayjs } from 'dayjs';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import DateReserve from './DateReserve';
 
@@ -17,6 +18,8 @@ export default function BookingPanel({
 	token: string;
 	restaurantName: string;
 }) {
+	const router = useRouter();
+
 	const [reserveDate, setreserveDate] = useState<Dayjs | null>(null);
 	const [numGuest, setNumGuest] = useState<number>(0);
 
@@ -46,6 +49,8 @@ export default function BookingPanel({
 				bookingCreatedAtString,
 			);
 			alert('Booked successfully!');
+			router.push('/mybooking');
+			router.refresh();
 		} catch (error) {
 			console.error('Error posting booking:', error);
 			alert('Failed to book. Please try again.');
