@@ -8,7 +8,6 @@ import { Rating } from '@mui/material';
 export default function RestaurantPage() {
   return (
     <div className="relative w-full min-h-screen bg-black text-white">
-      {/* Hero Section */}
       <div className="relative w-full h-64 mx-auto">
         <Image
           src="/img/gold-banner.png"
@@ -25,11 +24,8 @@ export default function RestaurantPage() {
         </div>
       </div>
 
-      {/* Main Content */}
       <div className="relative z-10 flex flex-col lg:flex-row lg:justify-between gap-12 px-6 lg:px-16 py-10">
-        {/* Left Content */}
         <div className="lg:w-2/3 space-y-8">
-          {/* Rating and Tags */}
           <div>
             <Rating
               value={4.5}
@@ -46,7 +42,6 @@ export default function RestaurantPage() {
             </div>
           </div>
 
-          {/* Description */}
           <p className="text-sm font-light">
             Welcome to Dongy Sushi – Where Luxury Meets Authenticity. Indulge in an elevated dining
             experience at Dongy Sushi, where every plate is a masterpiece, and every moment is
@@ -54,7 +49,6 @@ export default function RestaurantPage() {
             that combines modern elegance with traditional Japanese artistry.
           </p>
 
-          {/* Gallery */}
           <div className="relative h-72 rounded-lg overflow-hidden">
             <Image
               src="/img/banner.jpg"
