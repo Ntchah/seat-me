@@ -9,6 +9,7 @@ export default async function deleteRestaurant(id: string, token: string) {
 		},
 	);
 	if (!response.ok) {
+		console.log(response);
 		throw new Error('Failed to fetch');
 	}
 	return await response.json();

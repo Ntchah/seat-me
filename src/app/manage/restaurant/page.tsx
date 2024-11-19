@@ -34,6 +34,7 @@ export default async function page() {
 											name={restaurant.name}
 											foodType={restaurant.foodtype}
 											province={restaurant.province}
+											rid={restaurant._id}
 										/>
 									),
 								)}

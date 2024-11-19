@@ -47,6 +47,7 @@ export default async function page() {
 										userName={booking.user}
 										restaurantName={booking.restaurant.name}
 										bookingDate={formatDate(booking.bookingDate)}
+										bid={booking._id}
 									/>
 								))}
 							</tbody>
