@@ -1,4 +1,4 @@
-export default async function postBooking(
+export default async function putBooking(
 	id: string,
 	token: string,
 	bookingDate: string,
