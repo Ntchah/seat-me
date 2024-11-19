@@ -35,29 +35,31 @@ export default async function page() {
 
 
                     <div className="w-full max-w-4xl overflow-hidden rounded-lg mt-4">
-                         <div className="overflow-auto">
-                              <table className="w-full table-auto text-left">
-                                   <thead className="text-white text-sm border-b border-white font-medium">
-                                        <tr>
-                                             <th className="px-4 py-2">Name</th>
-                                             <th className="px-4 py-2">Foodtype</th>
-                                             <th className="px-4 py-2">Province</th>
-                                             <th className="px-4 py-2">Actions</th>
-                                        </tr>
-                                   </thead>
-                                   <tbody>
-                                        {restaurantData.map((data, index) => (
-                                             <RestaurantTableRow
-                                                  key={index}
-                                                  name={data.name}
-                                                  foodType={data.foodType}
-                                                  province={data.province}
-                                             />
-                                        ))}
-                                   </tbody>
-                              </table>
-                         </div>
-                    </div>
+					<div className="overflow-auto">
+						<table className="w-full table-auto text-left">
+							<thead className="text-white text-sm border-b border-white font-medium">
+								<tr>
+									<th className="px-4 py-2">Name</th>
+									<th className="px-4 py-2">Foodtype</th>
+									<th className="px-4 py-2">Province</th>
+									<th className="px-4 py-2">Actions</th>
+								</tr>
+							</thead>
+							<tbody>
+								{restaurantsJsonReady.data.map(
+									(restaurant: RestaurantItem, index: number) => (
+										<RestaurantTableRow
+											key={index}
+											name={restaurant.name}
+											foodType={restaurant.foodtype}
+											province={restaurant.province}
+										/>
+									),
+								)}
+							</tbody>
+						</table>
+					</div>
+				</div>
 
                </main>
           </div>
