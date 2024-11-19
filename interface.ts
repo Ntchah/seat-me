@@ -18,6 +18,12 @@ export interface RestaurantJson {
 	data: RestaurantItem[];
 }
 
+export interface RestaurantByIdJson {
+	success: boolean;
+	pagination: Object;
+	data: RestaurantItem;
+}
+
 export interface BookingItem {
 	_id: string;
 	user: string;
