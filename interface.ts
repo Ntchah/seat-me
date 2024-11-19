@@ -40,3 +40,9 @@ export interface BookingJson {
 	pagination: Object;
 	data: BookingItem[];
 }
+
+export interface BookingByIdJson {
+	success: boolean;
+	pagination: Object;
+	data: BookingItem;
+}

@@ -1,8 +1,8 @@
-'use client';
-
+import { authOptions } from '@/app/api/auth/[...nextauth]/authOptions';
 import BookingPanel from '@/components/BookingPanel';
 import getRestaurant from '@/libs/getRestaurant';
 import { Rating } from '@mui/material';
+import { getServerSession } from 'next-auth';
 import Image from 'next/image';
 import { RestaurantByIdJson } from '../../../../interface';
 
@@ -11,6 +11,9 @@ export default async function RestaurantPage({
 }: {
 	params: { rid: string };
 }) {
+	const session = await getServerSession(authOptions);
+	if (!session) return null;
+
 	const restaurantJson: Promise<RestaurantByIdJson> = getRestaurant(params.rid);
 	const restaurantJsonReady = await restaurantJson;
 
@@ -95,42 +98,44 @@ export default async function RestaurantPage({
 				</div>
 
 				<div className="lg:w-1/4">
-					<BookingPanel restaurantName={restaurantJsonReady.data.name} />
+					<BookingPanel
+						rid={restaurantJsonReady.data._id}
+						restaurantName={restaurantJsonReady.data.name}
+						token={session.user.token}
+					/>
 				</div>
 			</div>
-
-			{/* Reviews Section
-    <div className="bg-black text-white py-12 px-6 lg:px-16">
-      <h2 className="text-3xl font-bold mb-8">Reviews</h2>
-      <div className="space-y-8">
-        {Array(5)
-          .fill(0)
-          .map((_, index) => (
-            <div key={index} className="flex gap-4">
-              <div className="flex-shrink-0">
-                <Image
-                  src="/img/user-placeholder.png"
-                  alt="Reviewer"
-                  width={50}
-                  height={50}
-                  className="rounded-full"
-                />
-              </div>
-              <div>
-                <h4 className="font-medium">John Smith</h4>
-                <p className="text-sm text-gray-400">25, Nov 2025</p>
-                <p className="mt-2">
-                  Good atmosphere. Good food quality. Worth all the dime spent. I'd say this is
-                  perfect for family time!!
-                </p>
-                <div className="flex items-center mt-2">
-                  <span className="text-yellow-400">★★★☆☆</span>
-                </div>
-              </div>
-            </div>
-          ))}
-      </div>
-    </div> */}
+			<div className="bg-black text-white py-12 px-6 lg:px-16">
+				<h2 className="text-3xl font-bold mb-8">Reviews</h2>
+				<div className="space-y-8">
+					{Array(5)
+						.fill(0)
+						.map((_, index) => (
+							<div key={index} className="flex gap-4">
+								<div className="flex-shrink-0">
+									<Image
+										src="/img/user-placeholder.png"
+										alt="Reviewer"
+										width={50}
+										height={50}
+										className="rounded-full"
+									/>
+								</div>
+								<div>
+									<h4 className="font-medium">John Smith</h4>
+									<p className="text-sm text-gray-400">25, Nov 2025</p>
+									<p className="mt-2">
+										Good atmosphere. Good food quality. Worth all the dime
+										spent. I'd say this is perfect for family time!!
+									</p>
+									<div className="flex items-center mt-2">
+										<span className="text-yellow-400">★★★☆☆</span>
+									</div>
+								</div>
+							</div>
+						))}
+				</div>
+			</div>
 		</div>
 	);
 }
