@@ -25,7 +25,7 @@ export default function BookingPanel({ restaurantName }: { restaurantName: strin
                <div className="flex justify-between items-center">
                     <div className="z-10 w-10 lg:w-16">
                          <Image
-                              src="/img/Subtract.png"
+                              src="/img/subtract-inner-l.png"
                               alt="Left Decor"
                               layout="intrinsic"
                               objectFit="contain"
@@ -42,7 +42,7 @@ export default function BookingPanel({ restaurantName }: { restaurantName: strin
                     </div>
                     <div className="z-10 w-10 lg:w-16">
                          <Image
-                              src="/img/Subtract-decor.png"
+                              src="/img/subtract-inner-r.png"
                               alt="Right Decor"
                               layout="intrinsic"
                               objectFit="contain"
