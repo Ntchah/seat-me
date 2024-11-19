@@ -1,4 +1,8 @@
+import getRestaurants from '@/libs/getRestaurants';
+import { LinearProgress } from '@mui/material';
 import Image from 'next/image';
+import { Suspense } from 'react';
+import { RestaurantItem, RestaurantJson } from '../../interface';
 import RestaurantCard from './RestaurantCard';
 
 const categories: { name: string; imgSrc: string }[] = [
@@ -11,72 +15,10 @@ const categories: { name: string; imgSrc: string }[] = [
 	{ name: 'Others', imgSrc: '/img/others.png' },
 ];
 
-const tempRestaurant: {
-	name: string;
-	imgSrc: string;
-	categories: string[];
-	score: number;
-	href: string;
-}[] = [
-	{
-		name: 'Dongy Sushi',
-		imgSrc: '/img/dongy-sushi.jpeg',
-		categories: ['hot spot', 'fine dining'],
-		score: 1,
-		href: './',
-	},
-	{
-		name: 'Dongy Sushi',
-		imgSrc: '/img/dongy-sushi.jpeg',
-		categories: ['hot spot', 'fine dining'],
-		score: 2,
-		href: './',
-	},
-	{
-		name: 'Moodeng Steakhouse',
-		imgSrc: '/img/moodeng-steakhouse.jpeg',
-		categories: ['hot spot', 'fine dining'],
-		score: 3,
-		href: './',
-	},
-	{
-		name: 'Dongy Sushi',
-		imgSrc: '/img/dongy-sushi.jpeg',
-		categories: ['hot spot', 'fine dining'],
-		score: 2,
-		href: './',
-	},
-	{
-		name: 'Moodeng Steakhouse',
-		imgSrc: '/img/moodeng-steakhouse.jpeg',
-		categories: ['buffet', 'others'],
-		score: 3,
-		href: './',
-	},
-	{
-		name: 'Dongy Sushi',
-		imgSrc: '/img/dongy-sushi.jpeg',
-		categories: ['hot spot', 'fine dining'],
-		score: 5,
-		href: './',
-	},
-	{
-		name: 'Moodeng Steakhouse',
-		imgSrc: '/img/moodeng-steakhouse.jpeg',
-		categories: ['hot spot', 'fine dining'],
-		score: 4,
-		href: './',
-	},
-	{
-		name: 'Moodeng Steakhouse',
-		imgSrc: '/img/moodeng-steakhouse.jpeg',
-		categories: ['hot spot', 'fine dining'],
-		score: 3,
-		href: './',
-	},
-];
+export default async function RestaurantPanel() {
+	const restaurantsJson: Promise<RestaurantJson> = getRestaurants();
+	const restaurantsJsonReady = await restaurantsJson;
 
-export default function RestaurantPanel() {
 	return (
 		<div className="overflow-hidden w-full h-full relative z-10 px-16 flex flex-col items-center py-16">
 			<Image
@@ -111,17 +53,26 @@ export default function RestaurantPanel() {
 					</div>
 				))}
 			</div>
-			<div className="flex flex-wrap gap-8 z-10 pt-12 lg:pt-20 px-12 lg:px-16">
-				{tempRestaurant.map((restaurant, index) => (
-					<RestaurantCard
-						name={restaurant.name}
-						imgSrc={restaurant.imgSrc}
-						categories={restaurant.categories}
-						score={restaurant.score}
-						href={restaurant.href}
-					/>
-				))}
-			</div>
+			<Suspense
+				fallback={
+					<p>
+						Loading...
+						<LinearProgress />
+					</p>
+				}
+			>
+				<div className="flex flex-wrap gap-8 gap-y-16 lg:gap-y-8 z-10 pt-12 lg:pt-20 px-12 lg:px-16">
+					{restaurantsJsonReady.data.map((restaurant: RestaurantItem) => (
+						<RestaurantCard
+							name={restaurant.name}
+							imgSrc={restaurant.picture}
+							category={restaurant.foodtype}
+							score={5}
+							href={`/restaurant/${restaurant.id}`}
+						/>
+					))}
+				</div>
+			</Suspense>
 		</div>
 	);
 }

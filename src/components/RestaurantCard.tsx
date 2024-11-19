@@ -5,13 +5,13 @@ import Link from 'next/link';
 export default function RestaurantCard({
 	name,
 	imgSrc,
-	categories,
+	category,
 	score,
 	href,
 }: {
 	name: string;
 	imgSrc: string;
-	categories: string[];
+	category: string;
 	score: number;
 	href: string;
 }) {
@@ -25,16 +25,11 @@ export default function RestaurantCard({
 				height={100}
 			/>
 			<div className="relative flex flex-wrap gap-3 justify-start w-full py-2">
-				{categories.map((category, index) => (
-					<span
-						key={index}
-						className="bg-white text-black rounded-full px-3 py-0.5 text-xs"
-					>
-						{category}
-					</span>
-				))}
+				<div className="bg-white text-black rounded-full px-3 py-0.5 text-xs">
+					{category}
+				</div>
 			</div>
-			<p className="font-eglen text-5xl text-white text-left text-wrap max-w-[270px] py-2">
+			<p className="font-eglen text-5xl text-white text-left text-wrap max-w-[270px] py-2 w-full">
 				{name}
 			</p>
 			<Rating
