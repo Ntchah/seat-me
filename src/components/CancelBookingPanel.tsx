@@ -15,7 +15,7 @@ export default function CancelBookingPanel({
 	token: string;
 	restaurant: string;
 	reserveDate: string;
-	numOfGuests: string;
+	numOfGuests: number;
 }) {
 	const router = useRouter();
 	const handleSubmit = async () => {
