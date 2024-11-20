@@ -18,8 +18,8 @@ export default async function postRestaurant(
 			},
 			body: JSON.stringify({
 				name: name,
-				address: address,
 				foodtype: foodtype,
+				address: address,
 				province: province,
 				postalcode: postalcode,
 				tel: tel,
