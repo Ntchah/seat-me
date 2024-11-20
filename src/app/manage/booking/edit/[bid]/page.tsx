@@ -1,5 +1,5 @@
 import { authOptions } from '@/app/api/auth/[...nextauth]/authOptions';
-import EditBookingPanel from '@/components/EditBookingPanel';
+import EditBookingPanelAdmin from '@/components/EditBookingPanelAdmin';
 import { getServerSession } from 'next-auth';
 
 export default async function page({
@@ -12,5 +12,5 @@ export default async function page({
 	const session = await getServerSession(authOptions);
 	if (!session) return null;
 
-	return <EditBookingPanel bid={params.bid} token={session.user.token} />;
+	return <EditBookingPanelAdmin bid={params.bid} token={session.user.token} />;
 }
