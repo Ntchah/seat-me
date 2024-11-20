@@ -29,6 +29,29 @@ export default function Register() {
       return;
     }
 
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setErrorMessage('Please enter a valid email address.');
+      return;
+    }
+
+    // Phone number validation
+    const phoneRegex = /^[0-9]{10,}$/; // Allows only digits, minimum 10 digits
+    if (!phoneRegex.test(tel)) {
+      setErrorMessage('Phone number must be at least 10 digits and contain only numbers.');
+      return;
+    }
+
+    // Password validation (optional: add minimum strength requirements)
+    if (password.length < 6) {
+      setErrorMessage('Password must be at least 6 characters long.');
+      return;
+    }
+
+    // Clear error message if all checks pass
+    setErrorMessage('');
+
     try {
       const createdAt = new Date().toISOString();
       await userRegister(name, email, tel, role, password, createdAt);
