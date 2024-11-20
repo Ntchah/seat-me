@@ -29,7 +29,7 @@ export interface BookingItem {
 	user: string;
 	restaurant: RestaurantItem;
 	bookingDate: string;
-	numOfGuests: string;
+	numOfGuests: number;
 	__v: number;
 	id: string;
 }
