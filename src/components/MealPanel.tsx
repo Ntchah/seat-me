@@ -44,24 +44,24 @@ export default function MealPanel() {
 			</div>
 			<div className="flex flex-row px-16 lg:px-40 py-16 gap-20 overflow-scroll">
 				<MealCard
-					name="Sira Sushi"
-					imgSrc="/img/sira-sushi.jpeg"
-					categories={['japanese', 'fine dining']}
+					name="Dongy Sushi"
+					imgSrc="/img/dongy-sushi.jpeg"
+					categories={['fine dining']}
 				/>
 				<MealCard
-					name="Sira Sushi"
-					imgSrc="/img/sira-sushi.jpeg"
-					categories={['japanese', 'fine dining']}
+					name="Taraba san"
+					imgSrc="/img/taraba-san.jpeg"
+					categories={['premium']}
 				/>
 				<MealCard
-					name="Sira Sushi"
-					imgSrc="/img/sira-sushi.jpeg"
-					categories={['japanese', 'fine dining']}
+					name="FazeBooster's"
+					imgSrc="/img/fazeboosters.jpeg"
+					categories={['fine dining']}
 				/>
 				<MealCard
-					name="Sira Sushi"
-					imgSrc="/img/sira-sushi.jpeg"
-					categories={['japanese', 'fine dining']}
+					name="Moodeng Steak house"
+					imgSrc="/img/moodeng-steak-house.jpeg"
+					categories={['buffet']}
 				/>
 			</div>
 			<div className="flex flex-col items-center z-10 text-white relative pt-8 lg:pt-20">

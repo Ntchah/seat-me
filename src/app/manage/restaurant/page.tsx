@@ -28,7 +28,7 @@ export default async function page() {
 
 
                     <div className="w-full max-w-4xl overflow-hidden rounded-lg mt-4">
-					<div className="overflow-auto">
+					<div className="overflow-auto max-h-96">
 						<table className="w-full table-auto text-left">
 							<thead className="text-white text-sm border-b border-white font-medium">
 								<tr>
