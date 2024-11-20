@@ -21,8 +21,8 @@ export default function RestaurantCard({
 				src={imgSrc}
 				alt={name}
 				className="w-[270px] h-[400px] object-cover mb-4"
-				width={100}
-				height={100}
+				width={270}
+				height={400}
 			/>
 			<div className="relative flex flex-wrap gap-3 justify-start w-full py-2">
 				<div className="bg-white text-black rounded-full px-3 py-0.5 text-xs">
