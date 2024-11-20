@@ -84,9 +84,16 @@ export default function page() {
                          <p className="text-base lg:text-md text-gray-200 font-light">Role: {profile.role}</p>
                          <p className="text-base lg:text-md text-gray-200 font-light">Account Created: {new Date(profile.createdAt).toLocaleDateString()}</p>
 
-                         <Link href="/mybooking" className="mt-6 inline-block py-2 px-6 bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 text-white font-semibold rounded-full shadow-lg hover:from-yellow-500 hover:via-yellow-600 hover:to-yellow-700 transition-all duration-300">
+
+                         {profile.role === 'user' ? (
+                              <Link href="/mybooking" className="mt-6 inline-block py-2 px-6 bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 text-white font-semibold rounded-full shadow-lg hover:from-yellow-500 hover:via-yellow-600 hover:to-yellow-700 transition-all duration-300">
                                    View Bookings
-                         </Link>
+                              </Link>
+                         ) : (
+                              <Link href="/manage" className="mt-6 inline-block py-2 px-6 bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 text-white font-semibold rounded-full shadow-lg hover:from-yellow-500 hover:via-yellow-600 hover:to-yellow-700 transition-all duration-300">
+                                   Manage
+                              </Link>
+                         )}
                     </div>
                )}
           </div>
